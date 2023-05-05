@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.kg.love_calculator_beta.databinding.ItemOnBoardBinding
-import com.kg.love_calculator_beta.ui.onBoard.model.OnBoard
+import com.kg.love_calculator_beta.model.OnBoard
 import com.kg.love_calculator_beta.util.loadImage
 
 class OnBoardAdapter(private val onClick:() -> Unit): RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {

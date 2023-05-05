@@ -1,8 +1,10 @@
 package com.kg.love_calculator_beta.di
 
 import android.content.Context
-import com.kg.love_calculator_beta.preference.PrefHelper
-import com.kg.love_calculator_beta.remote.LoveApi
+import androidx.room.Room
+import com.kg.love_calculator_beta.DB.localDB.AppDatabase
+import com.kg.love_calculator_beta.preference.Pref
+import com.kg.love_calculator_beta.DB.remote.LoveApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +26,15 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providePref(@ApplicationContext context: Context): PrefHelper {
-        return PrefHelper(context)
+    fun providePref(@ApplicationContext context: Context): Pref {
+        return Pref(context)
+    }
+
+    @Provides
+    fun provideRoomDB(@ApplicationContext applicationContext: Context): AppDatabase {
+        return Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "database-name"
+        ).allowMainThreadQueries().build()
     }
 }

@@ -9,10 +9,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.kg.love_calculator_beta.mvvm.CalcLoveViewModel
+import com.kg.love_calculator_beta.ui.calculator.viewModel.CalcLoveViewModel
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.FragmentCalculatorBinding
-import com.kg.love_calculator_beta.preference.PrefHelper
+import com.kg.love_calculator_beta.preference.Pref
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import javax.inject.Inject
@@ -20,6 +20,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 @WithFragmentBindings
 class CalculatorFragment: Fragment() {
+
+    @Inject
+    lateinit var prefH: Pref
     private lateinit var binding: FragmentCalculatorBinding
     private val viewModel: CalcLoveViewModel by viewModels()
 
@@ -33,8 +36,15 @@ class CalculatorFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onBoardSection()
         initNavigations()
         initClickListeners()
+    }
+
+    private fun onBoardSection() {
+        if (!prefH.isUserSeen()) {
+            findNavController().navigate(R.id.onBoardFragment)
+        }
     }
 
     private fun initNavigations() {
@@ -67,6 +77,8 @@ class CalculatorFragment: Fragment() {
                             )
                         )
                     })
+                    etFirstName.text!!.clear()
+                    etSecondName.text!!.clear()
                 }
             }
         }

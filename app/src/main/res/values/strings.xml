@@ -52,6 +52,9 @@
     </string>
     <string name="your_score">Your Score</string>
     <string name="_100">100%</string>
-    <string name="try_again">Try Again</string>
+    <string name="try_again">Back</string>
     <string name="result">result</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="i_am_edit_text_in_dialog">I am Edit Text in Dialog</string>
 </resources>

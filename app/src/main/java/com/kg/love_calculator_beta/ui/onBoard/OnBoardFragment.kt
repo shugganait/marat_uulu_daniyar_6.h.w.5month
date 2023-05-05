@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.FragmentOnBoardBinding
-import com.kg.love_calculator_beta.preference.PrefHelper
+import com.kg.love_calculator_beta.preference.Pref
 import com.kg.love_calculator_beta.ui.onBoard.adapter.OnBoardAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
@@ -16,7 +16,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 @WithFragmentBindings
-class OnBoardFragment @Inject constructor(private val prefH: PrefHelper) : Fragment() {
+class OnBoardFragment : Fragment() {
+    @Inject
+    lateinit var prefH: Pref
     private lateinit var binding: FragmentOnBoardBinding
     private val adapter = OnBoardAdapter(this::onStartClick)
 

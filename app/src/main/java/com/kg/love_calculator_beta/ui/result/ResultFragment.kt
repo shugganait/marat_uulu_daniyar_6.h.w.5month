@@ -7,15 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.kg.love_calculator_beta.DB.localDB.AppDatabase
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.FragmentResultBinding
+import com.kg.love_calculator_beta.model.Love
 import com.kg.love_calculator_beta.ui.calculator.CalculatorFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
+import javax.inject.Inject
 
 @AndroidEntryPoint
 @WithFragmentBindings
 class ResultFragment : Fragment() {
+
+    @Inject
+    lateinit var db: AppDatabase
     private lateinit var binding: FragmentResultBinding
 
     override fun onCreateView(
@@ -31,6 +37,21 @@ class ResultFragment : Fragment() {
         initNavigations()
         setArgs()
         initSimpleClicks()
+        save()
+    }
+
+    private fun save() {
+        arguments?.apply {
+            if (!getBoolean("key_from_refactor")) {
+                val data = Love(
+                    firstName = getString(CalculatorFragment.KEY_FOR_FNAME),
+                    secondName = getString(CalculatorFragment.KEY_FOR_SNAME),
+                    percentage = getString(CalculatorFragment.KEY_FOR_PERC)
+                )
+                db.loveDao().insert(data)
+            }
+
+        }
     }
 
     private fun initSimpleClicks() {
