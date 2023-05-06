@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.kg.love_calculator_beta.DB.localDB.AppDatabase
+import com.kg.love_calculator_beta.db.localDB.AppDatabase
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.FragmentResultBinding
 import com.kg.love_calculator_beta.model.Love
@@ -23,6 +23,7 @@ class ResultFragment : Fragment() {
     @Inject
     lateinit var db: AppDatabase
     private lateinit var binding: FragmentResultBinding
+//    private val daoVM: DaoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

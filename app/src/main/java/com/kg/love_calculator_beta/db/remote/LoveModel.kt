@@ -1,4 +1,4 @@
-package com.kg.love_calculator_beta.DB.remote
+package com.kg.love_calculator_beta.db.remote
 
 import com.google.gson.annotations.SerializedName
 

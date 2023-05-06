@@ -1,4 +1,4 @@
-package com.kg.love_calculator_beta.DB.localDB
+package com.kg.love_calculator_beta.db.localDB
 
 import androidx.room.Dao
 import androidx.room.Insert

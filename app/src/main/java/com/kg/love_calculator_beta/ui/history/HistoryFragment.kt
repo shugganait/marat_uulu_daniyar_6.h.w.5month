@@ -12,7 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.kg.love_calculator_beta.DB.localDB.AppDatabase
+import com.kg.love_calculator_beta.db.localDB.AppDatabase
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.DialogLayoutBinding
 import com.kg.love_calculator_beta.databinding.FragmentHistoryBinding
@@ -34,6 +34,7 @@ class HistoryFragment : Fragment() {
     private lateinit var dialogBinding: DialogLayoutBinding
     private val adapter = LoveAdapter()
     private val viewModel: CalcLoveViewModel by viewModels()
+//    private val daoVM: DaoViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -70,7 +71,7 @@ class HistoryFragment : Fragment() {
             secondName = secondName,
             percentage = percentage
         )
-        db.loveDao().update(data)
+        db.loveDao().update(data)//////////-----------
     }
 
     private fun showDialog(activity: Activity, id: Int?) {

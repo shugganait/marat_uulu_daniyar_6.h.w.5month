@@ -1,4 +1,4 @@
-package com.kg.love_calculator_beta.DB.remote
+package com.kg.love_calculator_beta.db.remote
 
 import retrofit2.Call
 import retrofit2.http.GET

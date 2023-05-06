@@ -1,9 +1,10 @@
 package com.kg.love_calculator_beta.mvvm
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.kg.love_calculator_beta.DB.localDB.AppDatabase
-import com.kg.love_calculator_beta.DB.remote.LoveApi
-import com.kg.love_calculator_beta.DB.remote.LoveModel
+import com.kg.love_calculator_beta.db.localDB.AppDatabase
+import com.kg.love_calculator_beta.db.remote.LoveApi
+import com.kg.love_calculator_beta.db.remote.LoveModel
 import com.kg.love_calculator_beta.model.Love
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,13 +29,13 @@ class Repository @Inject constructor(private val api: LoveApi, private val dao: 
         return liveLove
     }
 
-    fun callDaoInsert(love: Love) {
-        dao.loveDao().insert(love)
-    }
-    fun callDaoGetAll(): List<Love> {
-        return dao.loveDao().getAll()
-    }
-    fun callDaoUpdate(love: Love) {
-        dao.loveDao().update(love)
-    }
+//    suspend fun daoInsert(love: Love) {
+//        dao.loveDao().insert(love)
+//    }
+//
+//    suspend fun daoUpdate(love: Love) {
+//        dao.loveDao().update(love)
+//    }
+//
+//    fun daoGetAll(): LiveData<List<Love>> = dao.loveDao().getAll()
 }

@@ -2,7 +2,7 @@ package com.kg.love_calculator_beta.ui.calculator.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.kg.love_calculator_beta.DB.remote.LoveModel
+import com.kg.love_calculator_beta.db.remote.LoveModel
 import com.kg.love_calculator_beta.mvvm.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

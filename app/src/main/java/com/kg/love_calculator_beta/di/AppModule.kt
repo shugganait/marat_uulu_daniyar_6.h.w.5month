@@ -2,9 +2,9 @@ package com.kg.love_calculator_beta.di
 
 import android.content.Context
 import androidx.room.Room
-import com.kg.love_calculator_beta.DB.localDB.AppDatabase
+import com.kg.love_calculator_beta.db.localDB.AppDatabase
 import com.kg.love_calculator_beta.preference.Pref
-import com.kg.love_calculator_beta.DB.remote.LoveApi
+import com.kg.love_calculator_beta.db.remote.LoveApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
