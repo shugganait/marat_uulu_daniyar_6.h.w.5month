@@ -57,4 +57,5 @@
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="i_am_edit_text_in_dialog">I am Edit Text in Dialog</string>
+    <string name="get_started">Get started</string>
 </resources>
