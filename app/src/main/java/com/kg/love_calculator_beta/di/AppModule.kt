@@ -3,6 +3,7 @@ package com.kg.love_calculator_beta.di
 import android.content.Context
 import androidx.room.Room
 import com.kg.love_calculator_beta.db.localDB.AppDatabase
+import com.kg.love_calculator_beta.db.localDB.LoveDao
 import com.kg.love_calculator_beta.preference.Pref
 import com.kg.love_calculator_beta.db.remote.LoveApi
 import dagger.Module
@@ -36,5 +37,10 @@ class AppModule {
             applicationContext,
             AppDatabase::class.java, "database-name"
         ).allowMainThreadQueries().build()
+    }
+
+    @Provides
+    fun provideLoveDao(@ApplicationContext applicationContext: Context): LoveDao{
+        return provideRoomDB(applicationContext).loveDao()
     }
 }

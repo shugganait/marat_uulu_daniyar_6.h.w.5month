@@ -17,9 +17,11 @@ import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.DialogLayoutBinding
 import com.kg.love_calculator_beta.databinding.FragmentHistoryBinding
 import com.kg.love_calculator_beta.model.Love
+import com.kg.love_calculator_beta.mvvm.Repository
 import com.kg.love_calculator_beta.ui.calculator.CalculatorFragment
 import com.kg.love_calculator_beta.ui.calculator.viewModel.CalcLoveViewModel
 import com.kg.love_calculator_beta.ui.history.adapter.LoveAdapter
+import com.kg.love_calculator_beta.util.showAutoKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
 import javax.inject.Inject
@@ -29,7 +31,7 @@ import javax.inject.Inject
 class HistoryFragment : Fragment() {
 
     @Inject
-    lateinit var db: AppDatabase
+    lateinit var repository: Repository
     private lateinit var binding: FragmentHistoryBinding
     private lateinit var dialogBinding: DialogLayoutBinding
     private val adapter = LoveAdapter()
@@ -54,7 +56,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        val data = db.loveDao().getAll()
+        val data = repository.daoGetAll()
         adapter.addList(data)
         binding.rvHistory.adapter = adapter
     }
@@ -71,7 +73,7 @@ class HistoryFragment : Fragment() {
             secondName = secondName,
             percentage = percentage
         )
-        db.loveDao().update(data)//////////-----------
+        repository.daoUpdate(data)
     }
 
     private fun showDialog(activity: Activity, id: Int?) {
@@ -81,7 +83,8 @@ class HistoryFragment : Fragment() {
         dialog.setContentView(dialogBinding.root)
 
         dialogBinding.apply {
-            btnOk.setOnClickListener{ i ->
+            showAutoKeyboard(requireContext(), etFirstName)
+            btnOk.setOnClickListener{
                 viewModel.liveLove(etFirstName.text.toString(), etSecondName.text.toString())
                     .observe(viewLifecycleOwner, Observer {
                         if (id != null) {

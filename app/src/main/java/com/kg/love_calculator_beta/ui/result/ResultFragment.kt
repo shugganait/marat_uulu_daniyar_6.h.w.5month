@@ -11,6 +11,7 @@ import com.kg.love_calculator_beta.db.localDB.AppDatabase
 import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.FragmentResultBinding
 import com.kg.love_calculator_beta.model.Love
+import com.kg.love_calculator_beta.mvvm.Repository
 import com.kg.love_calculator_beta.ui.calculator.CalculatorFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
@@ -21,9 +22,10 @@ import javax.inject.Inject
 class ResultFragment : Fragment() {
 
     @Inject
+    lateinit var repository: Repository
+    @Inject
     lateinit var db: AppDatabase
     private lateinit var binding: FragmentResultBinding
-//    private val daoVM: DaoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +51,7 @@ class ResultFragment : Fragment() {
                     secondName = getString(CalculatorFragment.KEY_FOR_SNAME),
                     percentage = getString(CalculatorFragment.KEY_FOR_PERC)
                 )
-                db.loveDao().insert(data)
+                repository.daoInsert(data)
             }
 
         }
