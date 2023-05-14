@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.kg.love_calculator_beta.R
 import com.kg.love_calculator_beta.databinding.ItemOnBoardBinding
 import com.kg.love_calculator_beta.model.OnBoard
-import com.kg.love_calculator_beta.util.loadImage
 
 class OnBoardAdapter(private val onClick:() -> Unit): RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
 
 
     private val data = arrayListOf(
-        OnBoard("https://www.chanty.com/blog/wp-content/uploads/2020/10/Task-manager-apps-scaled.jpg", "At First", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod consectetur ex, at pellentesque massa vehicula sit amet. Duis pretium, sem at porttitor euismod, risus urna ullamcorper quam, nec sodales."),
-        OnBoard("https://www.meistertask.com/blog/wp-content/uploads/2018/03/Zapier_Automations.png", "At Second", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis sem dapibus arcu finibus tristique. Ut porttitor tristique orci id gravida. Ut rutrum purus metus, nec vestibulum erat pharetra eleifend. Integer"),
-        OnBoard("https://project-management.com/wp-content/uploads/2023/01/pmcom-11923-clickup-alts.jpeg", "At Third", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac gravida felis, vitae scelerisque sem. Aliquam erat volutpat. Nullam eget velit non ex dignissim scelerisque ut ac augue. Donec ultrices mauris quis consectetur.")
+        OnBoard(R.raw.wit_practicle, "At First", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod consectetur ex, at pellentesque massa vehicula sit amet. Duis pretium, sem at porttitor euismod, risus urna ullamcorper quam, nec sodales."),
+        OnBoard(R.raw.love_dancing, "At Second", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis sem dapibus arcu finibus tristique. Ut porttitor tristique orci id gravida. Ut rutrum purus metus, nec vestibulum erat pharetra eleifend. Integer"),
+        OnBoard(R.raw.valentines_day, "At Third", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac gravida felis, vitae scelerisque sem. Aliquam erat volutpat. Nullam eget velit non ex dignissim scelerisque ut ac augue. Donec ultrices mauris quis consectetur.")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardViewHolder {
@@ -32,7 +32,7 @@ class OnBoardAdapter(private val onClick:() -> Unit): RecyclerView.Adapter<OnBoa
             binding.apply {
                 tvTitle.text = onBoard.title
                 tvDesc.text = onBoard.desc
-                imgBoard.loadImage(onBoard.image)
+                lottieLove.setAnimation(onBoard.lottie)
                 btnStart.isVisible = adapterPosition == 2
                 btnStart.setOnClickListener {
                     onClick()

@@ -16,12 +16,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         >
-        <ImageView
-            android:id="@+id/img_board"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            />
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:elevation="10dp"
+            android:id="@+id/lottie_love"/>
+
 
     </androidx.cardview.widget.CardView>
 
@@ -58,7 +60,7 @@
         android:layout_marginBottom="64dp"
         android:layout_marginHorizontal="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Get started"
+        android:text="@string/get_started"
         android:visibility="gone"
         />
 
